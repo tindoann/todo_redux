@@ -1,9 +1,23 @@
 import React from "react";
 import "./Input.css";
+import useDispatch from "react-redux";
 
 const Input = () => {
   const [input, setInput] = useState("");
-  const addTodo = () => {};
+  const dispatch = useDispatch();
+
+  const addTodo = () => {
+    console.log(`Adding ${input}`);
+
+    dispatch(
+      saveTodo({
+        item: input,
+        done: false,
+        id: Date.now(),
+      })
+    );
+  };
+
   return (
     <div className="input">
       <input
